@@ -9,15 +9,6 @@ Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powe
 
 We can't wait to see what you create with Chainlit! Happy coding! 💻😊
 
-1. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    cp .env.example .env
-    ```
+## Welcome screen
 
-2. Run the application:
-    ```bash
-    chainlit run main.py -w
-    ```
-
-3. Open your browser and go to `http://localhost:5000` to see the application running.
+To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
