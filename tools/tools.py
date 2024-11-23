@@ -67,17 +67,6 @@ def generate_market_report() -> str:
     doc.add_picture("./tools/hackathonImage2.png", width=Inches(2), height=Inches(2))
     doc.add_picture("./tools/hackathonImage3.png", width=Inches(2), height=Inches(2))
     doc.save(filename)
-    elements = [
-        cl.File(
-            name="market.docx",
-            path="market_report.docx",
-            display="inline",
-        ),
-    ]
-
-    cl.Message(
-        content="Download your market report", elements=elements
-    ).send()
     return " "
         
 
