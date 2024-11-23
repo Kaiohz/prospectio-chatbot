@@ -21,4 +21,4 @@ async def main(message: cl.Message):
         content=response.generations[0][0].text,
     ).send()
     
-    tools.docX.addText(response.generations[0][0].text)
+    tools.docX.addText(response.generations[0][0].text, 'demo.docx')

@@ -3,12 +3,16 @@ import matplotlib.pyplot as plt
 from docx import Document
 from docx.shared import Inches
 import re
+import os
 
 
 
 
-def addText(paragraph : str):
-    doc = Document()
+def addText(paragraph : str, filename : str):
+    if os.path.exists(filename):
+        doc=Document(filename)
+    else:
+        doc = Document()
     lines = paragraph.split('\n')
     
     for line in lines:
@@ -36,7 +40,9 @@ def addText(paragraph : str):
         elif line:
             doc.add_paragraph(line)
             
-    doc.save('demo.docx')
+    doc.save(filename)
+        
+    
     
 def add_bold_text(paragraph, text):
     parts = text.split('**')
