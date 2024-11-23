@@ -27,7 +27,7 @@ market_analysis_prompt = load_market_analysis_prompt()
 
 @tool
 def generate_market_report() -> str:
-    """Generate market report when its explicitly requested"""
+    """Generate market report only when its explicitly requested"""
     messages.append({"role": "system", "content": market_analysis_prompt})
     messages.extend(cl.chat_context.to_openai())
     print(messages)

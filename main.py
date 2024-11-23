@@ -19,6 +19,13 @@ embeddings = LLMProxyOpenAIEmbeddings()
 system_prompt = load_system_prompt()
 messages = [{"role": "system", "content": system_prompt}]
 
+@cl.on_chat_start
+async def on_chat_start():
+    # Send the LLM's response 
+    await cl.Message(
+        content="Bonjour, je suis votre assistant CréAventure. Comment puis-je vous aider à servir l'avenir ?",
+    ).send()
+
 @cl.on_message
 async def main(message: cl.Message):
     # Get the conversation history and add system prompt
