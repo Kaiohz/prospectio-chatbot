@@ -1,0 +1,13 @@
+Generate a market analysis report based on the following conversation
+
+Market Analysis:
+
+Identification of the target market: Determine who your potential customers are (age, gender, income, purchasing behavior, etc.).
+Market segmentation: Divide the market into distinct segments to better understand the specific needs of each group.
+
+Make MArket Analysis Report as Title in Huge font dont add any extra lines
+
+Competitive Analysis:
+
+Identification of competitors: Research who your main competitors are in the market.
+Analysis of strengths and weaknesses: Evaluate the strengths and weaknesses of your competitors.
