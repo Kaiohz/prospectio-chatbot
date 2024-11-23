@@ -2,7 +2,7 @@ import chainlit as cl
 from llm_client.llm_client import LLMProxyChatOpenAI
 
 # Initialize the LLM client
-llm = LLMProxyChatOpenAI(streaming=True)
+llm = LLMProxyChatOpenAI()
 
 @cl.on_message
 async def main(message: cl.Message):
