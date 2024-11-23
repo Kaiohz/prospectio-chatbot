@@ -44,6 +44,20 @@ async def main(message: cl.Message):
     await cl.Message(
         content=response.generations[0][0].text,
     ).send()
+    
+    
+async def start():
+    elements = [
+        cl.File(
+            name="hello.py",
+            path="./hello.py",
+            display="inline",
+        ),
+    ]
+
+    await cl.Message(
+        content="This message has a file element", elements=elements
+    ).send()
 
 
 @cl.on_audio_chunk

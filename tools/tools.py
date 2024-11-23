@@ -6,6 +6,9 @@ import os
 from llm_client.llm_client import LLMProxyChatOpenAI
 from memory.memory import messages
 import chainlit as cl
+import matplotlib.pyplot as plt
+from docx.shared import Inches
+
 
 
 
@@ -36,7 +39,6 @@ def generate_market_report() -> str:
     else:
         doc = Document()
     lines = paragraph.split('\n')
-    
     for line in lines:
         line = line.strip()
         # Check for headers and format accordingly
@@ -61,11 +63,24 @@ def generate_market_report() -> str:
             doc.add_paragraph(line[3:])
         elif line:
             doc.add_paragraph(line)
-            
+    doc.add_picture("./tools/hackathonImage1.png", width=Inches(2), height=Inches(2))
+    doc.add_picture("./tools/hackathonImage2.png", width=Inches(2), height=Inches(2))
+    doc.add_picture("./tools/hackathonImage3.png", width=Inches(2), height=Inches(2))
     doc.save(filename)
+    elements = [
+        cl.File(
+            name="market.docx",
+            path="market_report.docx",
+            display="inline",
+        ),
+    ]
+
+    cl.Message(
+        content="Download your market report", elements=elements
+    ).send()
     return " "
         
-    
+
     
 def add_bold_text(paragraph, text):
     parts = text.split('**')
