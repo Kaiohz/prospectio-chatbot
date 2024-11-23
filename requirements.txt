@@ -1,9 +1,7 @@
 chainlit
 langchain-openai
 httpx[http2]
-<<<<<<< HEAD
 matplotlib
 pandas
 python-docx
-=======
->>>>>>> 3b861d4b645410b2275a88f5b31251658256823b
+langgraph

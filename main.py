@@ -1,12 +1,9 @@
 import chainlit as cl
 from llm_client.llm_client import LLMProxyChatOpenAI, LLMProxyOpenAIEmbeddings
-from config import MODEL_EMBEDDINGS
-<<<<<<< HEAD
-import tools
-import tools.docX
-=======
 from io import BytesIO
+from tools.tools import tools, tool_node
 import os
+from memory.memory import messages
 
 def load_system_prompt():
     prompt_path = os.path.join(os.path.dirname(__file__), "prompts", "system_prompt.txt")
@@ -15,30 +12,38 @@ def load_system_prompt():
             return f.read().strip()
     except FileNotFoundError:
         return "You are a helpful AI assistant."
->>>>>>> 3b861d4b645410b2275a88f5b31251658256823b
 
 # Initialize the LLM client
-llm = LLMProxyChatOpenAI()
+llm = LLMProxyChatOpenAI().bind_tools(tools)
 embeddings = LLMProxyOpenAIEmbeddings()
 system_prompt = load_system_prompt()
+messages = [{"role": "system", "content": system_prompt}]
 
 @cl.on_message
 async def main(message: cl.Message):
     # Get the conversation history and add system prompt
-    messages = [{"role": "system", "content": system_prompt}]
     messages.extend(cl.chat_context.to_openai())
     
     # Call LLM with the full conversation history
+    tool_response = tool_node.invoke({"messages": [llm.invoke(message.content)]})
+    
+    # Concatenate all ToolMessage contents into a single string
+    tool_content = ""
+    if "messages" in tool_response:
+        tool_content = " ".join(
+            msg.content
+            for msg in tool_response["messages"]
+            if hasattr(msg, "content")
+        )
+    print(tool_response)
+    
+    messages.append({"role": "assistant", "content": tool_content}) 
     response = await llm.agenerate([messages])
     
     # Send the LLM's response
     await cl.Message(
         content=response.generations[0][0].text,
     ).send()
-<<<<<<< HEAD
-    
-    tools.docX.addText(response.generations[0][0].text, 'demo.docx')
-=======
 
 
 @cl.on_audio_chunk
@@ -53,4 +58,3 @@ async def on_audio_chunk(chunk: cl.AudioChunk):
 
     # Write the chunks to a buffer and transcribe the whole audio at the end
     cl.user_session.get("audio_buffer").write(chunk.data)
->>>>>>> 3b861d4b645410b2275a88f5b31251658256823b

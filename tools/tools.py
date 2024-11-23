@@ -1,14 +1,36 @@
-import pandas as pd
-import matplotlib.pyplot as plt
+from langchain_core.messages import AIMessage
+from langchain_core.tools import tool
 from docx import Document
-from docx.shared import Inches
-import re
+from langgraph.prebuilt import ToolNode
 import os
+from llm_client.llm_client import LLMProxyChatOpenAI
+from memory.memory import messages
+import chainlit as cl
 
 
 
 
-def addText(paragraph : str, filename : str):
+def load_market_analysis_prompt():
+    prompt_path = os.path.join(os.path.dirname(__file__), "../prompts", "market_analysis.txt")
+    try:
+        with open(prompt_path, "r", encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return "You are a helpful AI assistant."
+    
+    
+llm = LLMProxyChatOpenAI()
+market_analysis_prompt = load_market_analysis_prompt()
+
+@tool
+def generate_market_report() -> str:
+    """Generate market report when its explicitly requested"""
+    messages.append({"role": "system", "content": market_analysis_prompt})
+    messages.extend(cl.chat_context.to_openai())
+    print(messages)
+    response =llm.generate([messages])
+    filename="market_report.docx"
+    paragraph = response.generations[0][0].text
     if os.path.exists(filename):
         doc=Document(filename)
     else:
@@ -41,6 +63,7 @@ def addText(paragraph : str, filename : str):
             doc.add_paragraph(line)
             
     doc.save(filename)
+    return " "
         
     
     
@@ -51,3 +74,7 @@ def add_bold_text(paragraph, text):
             paragraph.add_run(part)
         else:
             paragraph.add_run(part).bold = True
+
+
+tools = [generate_market_report]
+tool_node = ToolNode(tools)
