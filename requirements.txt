@@ -1,3 +1,6 @@
 chainlit
 langchain-openai
 httpx[http2]
+matplotlib
+pandas
+python-docx

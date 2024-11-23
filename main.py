@@ -1,7 +1,8 @@
 import chainlit as cl
 from llm_client.llm_client import LLMProxyChatOpenAI, LLMProxyOpenAIEmbeddings
 from config import MODEL_EMBEDDINGS
-
+import tools
+import tools.docX
 
 # Initialize the LLM client
 llm = LLMProxyChatOpenAI()
@@ -19,3 +20,5 @@ async def main(message: cl.Message):
     await cl.Message(
         content=response.generations[0][0].text,
     ).send()
+    
+    tools.docX.addText(response.generations[0][0].text)
