@@ -3,6 +3,7 @@ from llm_client.llm_client import LLMProxyChatOpenAI, LLMProxyOpenAIEmbeddings
 from io import BytesIO
 from tools.tools import tools, tool_node
 import os
+from memory.memory import messages
 
 def load_system_prompt():
     prompt_path = os.path.join(os.path.dirname(__file__), "prompts", "system_prompt.txt")
@@ -16,11 +17,11 @@ def load_system_prompt():
 llm = LLMProxyChatOpenAI().bind_tools(tools)
 embeddings = LLMProxyOpenAIEmbeddings()
 system_prompt = load_system_prompt()
+messages = [{"role": "system", "content": system_prompt}]
 
 @cl.on_message
 async def main(message: cl.Message):
     # Get the conversation history and add system prompt
-    messages = [{"role": "system", "content": system_prompt}]
     messages.extend(cl.chat_context.to_openai())
     
     # Call LLM with the full conversation history
@@ -34,6 +35,7 @@ async def main(message: cl.Message):
             for msg in tool_response["messages"]
             if hasattr(msg, "content")
         )
+    print(tool_response)
     
     messages.append({"role": "assistant", "content": tool_content}) 
     response = await llm.agenerate([messages])
