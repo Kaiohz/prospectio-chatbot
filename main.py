@@ -1,8 +1,11 @@
 import chainlit as cl
-from llm_client.llm_client import LLMProxyChatOpenAI
+from llm_client.llm_client import LLMProxyChatOpenAI, LLMProxyOpenAIEmbeddings
+from config import MODEL_EMBEDDINGS
+
 
 # Initialize the LLM client
-llm = LLMProxyChatOpenAI(streaming=True)
+llm = LLMProxyChatOpenAI()
+embeddings = LLMProxyOpenAIEmbeddings()
 
 @cl.on_message
 async def main(message: cl.Message):
