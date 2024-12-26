@@ -13,6 +13,7 @@ We can't wait to see what you create with Chainlit! Happy coding! 💻😊
 
    ```bash
    pip install -r requirements.txt
+   ollama pull llama3.2 llama3.1 qwen2.5 mistral
    cp .env.example .env
    ```
 
@@ -23,3 +24,8 @@ We can't wait to see what you create with Chainlit! Happy coding! 💻😊
    ```
 
 3. Open your browser and go to `http://localhost:5000` to see the application running.
+
+
+## Extras 
+
+Langgraph tutorials : `https://github.com/langchain-ai/langgraph/tree/main/docs/docs/tutorials`
