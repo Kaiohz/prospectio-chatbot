@@ -23,7 +23,7 @@ We can't wait to see what you create with Chainlit! Happy coding! 💻😊
    chainlit run main.py -w
    ```
 
-3. Open your browser and go to `http://localhost:5000` to see the application running.
+3. Open your browser and go to `http://localhost:8000` to see the application running.
 
 
 ## Extras 

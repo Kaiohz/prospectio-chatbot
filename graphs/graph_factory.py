@@ -1,4 +1,5 @@
 from graphs.conversational.graph import ConversationalGraph
+from graphs.news.graph import NewsGraph
 from graphs.generic_graph import GenericGraph
 from graphs.graph_params import GraphParams
 
@@ -7,6 +8,7 @@ class GraphFactory:
 
     graph_mapping = {
         "Conversational AI": ConversationalGraph,
+        "News AI": NewsGraph
     }
 
     def __init__(self, graph_params: GraphParams):

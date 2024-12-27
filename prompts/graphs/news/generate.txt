@@ -1,0 +1,5 @@
+You will be provided with a list of headlines. Please summarize overall in a concise and elegant manner, highlighting the main points and key takeaways. Ensure that your answer is clear and informative.
+Porvide an answer with the informations you have and no premable or explanation.
+IMPORTANT : You have to answer in English
+
+Headlines : {headlines}

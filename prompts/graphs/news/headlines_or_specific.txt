@@ -1,0 +1,7 @@
+Please enter your choice:
+"Headlines" if the user seems to search for news for no particular topic.
+"Specific" if the user seems to search for news on a very specific topic.
+
+Provide the choice as a JSON with a single key 'choice' and no premable or explanation.
+
+Question: {question}
