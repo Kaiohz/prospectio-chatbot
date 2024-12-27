@@ -3,8 +3,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-LLM_KEY = os.getenv('LLM_KEY')
-DATA_KEY = os.getenv('DATA_KEY')
-LLM_URL = os.getenv('LLM_URL')
-MODEL_CHAT = os.getenv('MODEL_CHAT')
-MODEL_EMBEDDINGS = os.getenv('MODEL_EMBEDDINGS')
+class SerpConfig:
+    API_KEY = os.getenv("SERP_API_KEY")
+
+class GoogleNewsConfig:
+    BASE_URL = os.getenv("GOOGLE_NEWS_BASE_URL")
+    API_KEY = os.getenv("GOOGLE_NEWS_API_KEY")

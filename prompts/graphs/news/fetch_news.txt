@@ -1,0 +1,7 @@
+You have access to tools : get_top_headlines, get_everything.
+For user questions related to generic news for one country use get_top_headlines
+For user questions related to news on specific topic, company, person use get_everything
+
+Question: {question}
+Country: {country}
+

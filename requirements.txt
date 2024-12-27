@@ -5,6 +5,7 @@ matplotlib
 pandas
 python-docx
 langgraph
-ollama
+langchain-ollama
 langchain-community
 langgraph
+httpx[http2]
