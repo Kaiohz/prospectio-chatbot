@@ -1,31 +1,48 @@
-# Welcome to Chainlit! 🚀🤖
+# Chainlit LLM Application 🚀🤖
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+A Python application built with Chainlit for interacting with Large Language Models.
 
-## Useful Links 🔗
+## Project Structure
+```
+.  
+├── apis/         # API integrations including Google News  
+├── graphs/       # Graph implementations for conversation flows  
+├── profiles/     # Chat profile configurations  
+├── prompts/      # LLM prompt templates and loader  
+├── public/       # Static assets and avatars  
+├── settings/     # Application settings and configurations  
+└── main.py       # Entry point of the application
+```
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+## Getting Started
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+ollama pull llama3.2 llama3.1 qwen2.5 mistral
+cp .env.example .env
+```
 
-1. Install dependencies:
+### Configure Environment
+- Copy `.env.example` to `.env`
+- Update the environment variables as needed
 
-   ```bash
-   pip install -r requirements.txt
-   ollama pull llama3.2 llama3.1 qwen2.5 mistral
-   cp .env.example .env
-   ```
+### Run the Application
+```bash
+chainlit run main.py -w
+```
 
-2. Run the application:
+- Access the application at [http://localhost:8000](http://localhost:8000)
 
-   ```bash
-   chainlit run main.py -w
-   ```
+## Features
+- **API integrations** with Google News
+- **Graph implementations** for conversation flows
+- **Chat profile configurations**
+- **LLM prompt templates and loader**
+- **Application settings and configurations**
 
-3. Open your browser and go to `http://localhost:8000` to see the application running.
+## Extras
+- **Langgraph Tutorials**: [Langgraph Tutorials on GitHub](https://github.com/langchain-ai/langgraph/tree/main/docs/docs/tutorials)
 
-
-## Extras 
-
-Langgraph tutorials : `https://github.com/langchain-ai/langgraph/tree/main/docs/docs/tutorials`
+## Useful Links
+- **Documentation**: Get started with our comprehensive Chainlit Documentation at [https://docs.chainlit.io](https://docs.chainlit.io)
