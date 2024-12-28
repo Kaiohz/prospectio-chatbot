@@ -33,14 +33,13 @@ class CoreEssentials:
             if chunk[0] == "messages" and chunk[1][1]["langgraph_node"] == "generate":
                 values: AIMessageChunk = chunk[1][0]
                 await answer.stream_token(values.content)
-                node_name = nodes_mapping[cl.user_session.get("chat_profile")]
-                if node_name:
-                    await self.process_sources(node_name,chunk,answer)
-            answer = await self.process_sources(chunk,answer)
+            node_name = nodes_mapping[cl.user_session.get("chat_profile")]
+            if node_name:
+                await self.process_sources(node_name,chunk,answer)
         await answer.send()
 
     async def process_sources(self, node_name: str,chunk,answer: cl.Message) -> cl.Message:
-        if node_name and chunk[0] == "updates":
+        if chunk[0] == "updates":
             if node_name in chunk[1] and "sources" in chunk[1][node_name]:
                 sources = chunk[1][node_name]["sources"]
                 formatted_sources = "\n".join(sources)
