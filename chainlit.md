@@ -35,7 +35,11 @@ cp .env.example .env
 
 ## Get GoogleNews API key
 
+https://newsapi.org/s/google-news-fr-api
+
 ## Get your Gemini key if you want to gemini-1.5-flash
+
+https://aistudio.google.com/
 
 ### Configure Environment
 - Copy `.env.example` to `.env`
