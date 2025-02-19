@@ -32,3 +32,31 @@ services:
     container_name: creaventure-ollama
     ports:
       - "11434:11434"
+  
+  browser-use-webui:
+    platform: linux/amd64
+    build:
+      context: ./browser-use-webui
+      dockerfile: ${DOCKERFILE:-Dockerfile}
+      args:
+        TARGETPLATFORM: ${TARGETPLATFORM:-linux/amd64}
+    ports:
+      - "7788:7788"  # Gradio default port
+      - "6080:6080"  # noVNC web interface
+      - "5901:5901"  # VNC port
+      - "9222:9222"  # Chrome remote debugging port
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    restart: unless-stopped
+    shm_size: '2gb'
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp=unconfined
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5901"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

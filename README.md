@@ -21,7 +21,7 @@ A Python application built with Chainlit for interacting with Large Language Mod
 
 ### Install Dependencies
 ```bash
-git clone
+git clone --recurse-submodules https://github.com/Kaiohz/CreaVenture.git
 cd chatbot 
 curl https://pyenv.run | bash
 pyenv install 3.12
@@ -36,11 +36,6 @@ playwright install
 cp .env.example .env
 ```
 
-### Docker
-```bash
-docker-compose up
-```
-
 ## Get GoogleNews API key
 
 https://newsapi.org/s/google-news-fr-api
@@ -49,9 +44,20 @@ https://newsapi.org/s/google-news-fr-api
 
 https://aistudio.google.com/
 
+## Get your Mistral API key 
+
+https://auth.mistral.ai/ui/login
+
 ### Configure Environment
-- Copy `.env.example` to `.env`
+- Copy for chatbot `.env.example` to `.env`
 - Update the environment variables as needed
+
+### Docker
+- Copy for chatbot `.env.example` to `.env.docker`
+- change hostnames to match services in docker-compose.yml
+```bash
+docker-compose up
+```
 
 ### Run the Application
 ```bash
@@ -59,6 +65,7 @@ poetry run chainlit run main.py -w
 ```
 
 - Access the application at [http://localhost:8000](http://localhost:8000)
+- Default login/password admin/admin
 
 ## Features
 - **API integrations** with Google News
