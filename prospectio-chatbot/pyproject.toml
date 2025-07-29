@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "prospectio-chatbot"
+version = "0.1.0"
+description = "Chatbot for Prospectio api and front using Chainlit"
+authors = ["Kaiohz <yohan.goncalves.pro@gmail.com>"]
+license = "Apache 2.0"
+
+[tool.poetry.dependencies]
+python = "^3.12.7"
+chainlit = "2.6.2"
+pydantic = "2.10.1"
+numpy = "2.1.0"
+google-auth = "2.37.0"
+ollama = "0.5.1"
+torch = "2.2"
+psycopg = "3.2.4"
+psycopg-binary = "3.2.4"
+gradio-client = "1.7.0"
+langgraph = "0.3.11"
+langchain-ollama = "0.3.5"
+langchain-community = "0.3.27"
+langchain-mistralai = "0.2.11"
+httpx = {extras = ["http2"], version = "0.28.1"}
+setuptools-rust = "1.11.1"
+langchain-google-genai = "2.1.8"
+langchain-mcp-adapters = "0.1.9"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

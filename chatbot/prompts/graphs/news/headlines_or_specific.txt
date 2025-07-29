@@ -1,4 +1,0 @@
-Please enter your choice:
-"Return a JSON object with a single key 'choice' and no explanation. Use 'Headlines' for broad, general news or 'Specific' for a focused topic.
-
-Question: {question}

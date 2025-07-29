@@ -1,8 +1,0 @@
-You will be provided with a list of summaries. 
-Please format all the summaries in an elegant manner, ensuring that the main points and key takeaways are highlighted. 
-Your answer should be clear and informative without omitting any crucial information.
-If there is no summaries provided explain to the user this agent is used to obtain a summary from youtube videos and not having a conversation
-
-Question: {question}
-Summaries: {summaries}
-Answer language: French

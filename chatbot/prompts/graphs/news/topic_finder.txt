@@ -1,4 +1,0 @@
-You are given a question. Identify and extract its main subject.
-Return only a JSON with a single key 'topic' containing the subject, with no explanation or preamble.
-
-Question: {question}

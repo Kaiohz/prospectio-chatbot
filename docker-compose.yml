@@ -1,74 +1,36 @@
 
 services:
-  db:
-    profiles:
-      - default
-      - db
-    image: pgvector/pgvector:0.8.0-pg17
-    container_name: creaventure-pgvector
-    environment:
-      POSTGRES_USER: creaventure
-      POSTGRES_PASSWORD: creaventure
-      POSTGRES_DB: creaventure
+  prospectio-chatbot:
+    build:
+      context: ./prospectio-chatbot
+      dockerfile: Dockerfile
+    container_name: prospectio-chatbot
     ports:
-      - "5432:5432"
+      - "8000:8000"
+    networks:
+      - prospectio
+    depends_on:
+      prospectio-chatbot-db:
+        condition: service_healthy
+  prospectio-chatbot-db:
+    image: pgvector/pgvector:0.8.0-pg17
+    container_name: prospectio-chatbot-pgvector
+    environment:
+      POSTGRES_USER: prospectio
+      POSTGRES_PASSWORD: prospectio
+      POSTGRES_DB: prospectio
+    ports:
+      - "5434:5432"
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U creaventure -d creaventure"]
+      test: ["CMD-SHELL", "pg_isready -U prospectio -d prospectio"]
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - prospectio
 
-  chatbot:
-    profiles:
-      - default
-      - chatbot
-    build:
-      context: ./chatbot
-      dockerfile: Dockerfile
-    container_name: creaventure-chatbot
-    ports:
-      - "8000:8000"
-
-  ollama:
-    profiles:
-      - default
-      - ollama
-    build:
-      context: ./ollama
-      dockerfile: Dockerfile
-    container_name: creaventure-ollama
-    ports:
-      - "11434:11434"
-  
-  browser-use-webui:
-    profiles:
-      - default
-      - browser-use-webui
-    platform: ${TARGETPLATFORM:-linux/amd64} 
-    build:
-      context: ./browser-use-webui
-      dockerfile: ${DOCKERFILE:-Dockerfile}
-      args:
-        TARGETPLATFORM: ${TARGETPLATFORM:-linux/amd64}
-    ports:
-      - "7788:7788"  # Gradio default port
-      - "6080:6080"  # noVNC web interface
-      - "5901:5901"  # VNC port
-      - "9222:9222"  # Chrome remote debugging port
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    restart: unless-stopped
-    shm_size: '2gb'
-    cap_add:
-      - SYS_ADMIN
-    security_opt:
-      - seccomp=unconfined
-    tmpfs:
-      - /tmp
-    healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "5901"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+networks:
+  prospectio:
+    external: true

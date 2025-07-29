@@ -1,8 +1,0 @@
-You have access to the following tools: get_top_headlines and get_everything.
-Use get_top_headlines for general news in a specific country.
-Use get_everything for more targeted searches on specific topics, companies, or persons.
-
-Question: {question}
-Country_code: {country_code}
-Choice: {choice}
-

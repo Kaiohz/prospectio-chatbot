@@ -1,6 +1,0 @@
-You will be provided with an audio transcript. 
-Ensuring that all important details are retained. 
-Your answer should be clear and informative without omitting any crucial information.
-Provide only your answer in English, with no preamble or extra explanation.
-
-Transcript: {transcript}

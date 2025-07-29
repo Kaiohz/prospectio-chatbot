@@ -55,6 +55,12 @@ https://auth.mistral.ai/ui/login
 ### Docker
 - Copy for chatbot `.env.example` to `.env.docker`
 - change hostnames to match services in docker-compose.yml
+
+First build a network for prospectio :
+```bash
+docker network create prospectio
+```
+
 ```bash
 docker-compose up
 ```
