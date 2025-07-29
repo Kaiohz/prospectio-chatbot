@@ -36,10 +36,6 @@ playwright install
 cp .env.example .env
 ```
 
-## Get GoogleNews API key
-
-https://newsapi.org/s/google-news-fr-api
-
 ## Get your Gemini key if you want to gemini-1.5-flash
 
 https://aistudio.google.com/
@@ -71,14 +67,7 @@ poetry run chainlit run chainlit.py -w
 ```
 
 - Access the application at [http://localhost:8000](http://localhost:8000)
-- Default login/password admin/admin
-
-## Features
-- **API integrations** with Google News
-- **Graph implementations** for conversation flows
-- **Chat profile configurations**
-- **LLM prompt templates and loader**
-- **Application settings and configurations**
+- Default login/password prospectio/prospectio
 
 ## Extras
 - **Langgraph Tutorials**: [Langgraph Tutorials on GitHub](https://github.com/langchain-ai/langgraph/tree/main/docs/docs/tutorials)
