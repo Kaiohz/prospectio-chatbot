@@ -9,6 +9,8 @@ services:
       - "8000:8000"
     networks:
       - prospectio
+    env_file:
+      - .env.docker
     depends_on:
       prospectio-chatbot-db:
         condition: service_healthy
