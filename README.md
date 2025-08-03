@@ -68,9 +68,3 @@ poetry run chainlit run chainlit.py -w
 
 - Access the application at [http://localhost:8000](http://localhost:8000)
 - Default login/password prospectio/prospectio
-
-## Extras
-- **Langgraph Tutorials**: [Langgraph Tutorials on GitHub](https://github.com/langchain-ai/langgraph/tree/main/docs/docs/tutorials)
-
-## Useful Links
-- **Documentation**: Get started with our comprehensive Chainlit Documentation at [https://docs.chainlit.io](https://docs.chainlit.io)
