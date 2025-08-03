@@ -20,7 +20,9 @@ COPY ./pyproject.toml ./
 
 RUN poetry install --no-root
 
-COPY . .
+COPY .env.docker .env
+
+COPY ./prospectio_chatbot .
 
 EXPOSE 8000
 
