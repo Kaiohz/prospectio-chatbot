@@ -27,12 +27,6 @@ curl https://pyenv.run | bash
 pyenv install 3.12
 pyenv global 3.12
 poetry install
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull llama3.2 
-ollama pull llama3.1
-ollama pull qwen2.5
-ollama pull mistral
-playwright install
 cp .env.example .env
 ```
 
