@@ -20,6 +20,7 @@ langchain-community = "0.3.27"
 langchain-mistralai = "0.2.11"
 httpx = {extras = ["http2"], version = "0.28.1"}
 langchain-google-genai = "2.1.8"
+langchain-openai = "0.3.32"
 langchain-mcp-adapters = "0.1.9"
 greenlet = "3.2.4"
 

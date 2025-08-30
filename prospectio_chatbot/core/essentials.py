@@ -53,13 +53,13 @@ class CoreEssentials:
             node_name.split(",")[1] if len(node_name.split(",")) > 1 else None
         )
         settings = f"{cl.user_session.get('chat_profile')} - Model : {cl.user_session.get('model')} - Temperature : {cl.user_session.get('temperature')}\n"
-        answer.elements.append(cl.Text(content=f"{settings}", display="inline"))
+        answer.elements.append(cl.Text(content=f"{settings}", display="inline")) # type: ignore
         async for chunk in response:
-            if chunk[0] == "messages" and chunk[1][1]["langgraph_node"] == final_node:
-                values: AIMessageChunk = chunk[1][0]
-                await answer.stream_token(values.content)
+            if chunk[0] == "messages" and chunk[1][1]["langgraph_node"] == final_node: # type: ignore
+                values: AIMessageChunk = chunk[1][0] # type: ignore
+                await answer.stream_token(values.content) # type: ignore
             if node_name:
-                await self.process_sources(sources_node, chunk, answer)
+                await self.process_sources(sources_node, chunk, answer) # type: ignore
         await answer.send()
 
     async def process_sources(self, node_name: str, chunk, answer: cl.Message) -> str:
@@ -69,5 +69,5 @@ class CoreEssentials:
                 sources = chunk[1][node_name]["sources"]
                 formatted_sources = "\n".join(sources)
                 sources = f"Sources:\n{formatted_sources}"
-                answer.elements.append(cl.Text(content=f"{sources}", display="inline"))
-        return sources
+                answer.elements.append(cl.Text(content=f"{sources}", display="inline")) # type: ignore
+        return sources # type: ignore
