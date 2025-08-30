@@ -1,4 +1,3 @@
-import os
 import chainlit as cl
 from config import PostgreSettings
 from settings.chat_settings import ChatSettings
