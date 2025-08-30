@@ -18,6 +18,8 @@ RUN poetry install --no-root
 
 # Copy source code
 COPY ./prospectio_chatbot ./prospectio_chatbot
+COPY .chainlit .chainlit
+COPY ./public ./public
 
 # Final stage: minimal runtime image
 FROM python:3.12.8-slim AS app
@@ -26,7 +28,9 @@ WORKDIR /app
 # Copy installed packages from builder
 COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /app/prospectio_chatbot ./prospectio_chatbot
+COPY --from=builder /app/.chainlit ./.chainlit
+COPY --from=builder /app/public ./public
 
 EXPOSE 8000
 
-CMD ["python", "-m", "chainlit", "run", "prospectio_chatbot/chainlit.py", "--host", "0.0.0.0"]
+CMD ["python", "-m", "chainlit", "run", "prospectio_chatbot/main.py", "--host", "0.0.0.0"]
