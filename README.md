@@ -21,11 +21,7 @@ A Python application built with Chainlit for interacting with Large Language Mod
 
 ### Install Dependencies
 ```bash
-git clone --recurse-submodules https://github.com/Kaiohz/CreaVenture.git
-cd chatbot 
-curl https://pyenv.run | bash
-pyenv install 3.12
-pyenv global 3.12
+cd prospectio-chatbot 
 poetry install
 cp .env.example .env
 ```
