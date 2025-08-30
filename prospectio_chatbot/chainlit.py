@@ -1,6 +1,6 @@
 import os
 import chainlit as cl
-from chainlit import Message, User
+from config import PostgreSettings
 from settings.chat_settings import ChatSettings
 from profiles.chat_profiles import ChatProfiles
 from core.essentials import CoreEssentials
@@ -14,6 +14,7 @@ from langchain_mcp_adapters.tools import load_mcp_tools
 chat_settings = ChatSettings().get_chat_settings()
 chat_profiles = ChatProfiles().get_chat_profiles()
 core = CoreEssentials()
+postgre_settings = PostgreSettings()
 
 
 @cl.on_mcp_connect 
@@ -25,7 +26,7 @@ async def on_mcp(connection, session: ClientSession):
 @cl.data_layer  
 def get_data_layer():
     return SQLAlchemyDataLayer(
-        conninfo=os.environ.get("POSTGRE_CONNECTION_STRING"), storage_provider=None 
+        conninfo=postgre_settings.POSTGRE_CONNECTION_STRING, storage_provider=None
     )
 
 

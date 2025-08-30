@@ -2,7 +2,7 @@
 services:
   prospectio-chatbot:
     build:
-      context: ./prospectio-chatbot
+      context: .
       dockerfile: Dockerfile
     container_name: prospectio-chatbot
     ports:
