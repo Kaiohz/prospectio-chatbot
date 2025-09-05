@@ -58,3 +58,5 @@ poetry run chainlit run chainlit.py -w
 
 - Access the application at [http://localhost:8000](http://localhost:8000)
 - Default login/password prospectio/prospectio
+
+**Built with ❤️ by the Prospectio Team**
