@@ -33,4 +33,4 @@ COPY --from=builder /app/public ./public
 
 EXPOSE 8000
 
-CMD ["python", "-m", "prospectio_chatbot.main", "--host", "0.0.0.0"]
+CMD ["python", "-m", "chainlit", "run", "prospectio_chatbot/main.py", "--host", "0.0.0.0"]

@@ -4,7 +4,6 @@ from pydantic_settings import BaseSettings
 class ChainlitSettings(BaseSettings):
     """Settings for Chainlit."""
     MODELS_LIST: list[str] = Field(..., env="MODELS_LIST")
-    ALLOWED_ORIGINS: str = Field(..., env="ALLOWED_ORIGINS")
 
 class OllamaSettings(BaseSettings):
     """Settings for Ollama API."""

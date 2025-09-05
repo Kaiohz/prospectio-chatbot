@@ -31,12 +31,12 @@ def get_data_layer():
 
 @cl.on_chat_resume  
 async def resume_conversation(thread: ThreadDict):
-    settings = thread.get("metadata").get("chat_settings") 
-    await core.setup_chat(settings["Model"], settings["Temperature"]) 
+    settings = thread.get("metadata").get("chat_settings")  # type: ignore
+    await core.setup_chat(settings["Model"], settings["Temperature"])  # type: ignore
     await cl.ChatSettings(chat_settings).send() 
 
 
-@cl.password_auth_callback  
+@cl.password_auth_callback   # type: ignore
 def auth_callback(username: str, password: str):
     if username == "prospectio" and password == "prospectio":
         return cl.User(
@@ -45,14 +45,14 @@ def auth_callback(username: str, password: str):
     return None
 
 
-@cl.set_chat_profiles  
+@cl.set_chat_profiles   # type: ignore
 async def chat_profile():
     return chat_profiles
 
 
 @cl.on_chat_start
 async def on_chat_start():
-    await core.setup_chat(chat_settings[0].values[0], chat_settings[1].initial) 
+    await core.setup_chat(chat_settings[0].values[0], chat_settings[1].initial)  # type: ignore
     await cl.ChatSettings(chat_settings).send() 
 
 
