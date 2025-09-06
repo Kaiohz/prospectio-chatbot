@@ -7,6 +7,8 @@ from chainlit.data.sql_alchemy import SQLAlchemyDataLayer
 from chainlit.types import ThreadDict
 from mcp import ClientSession
 from langchain_mcp_adapters.tools import load_mcp_tools
+from chainlit.utils import mount_chainlit
+from api.main import app
 
 
 
@@ -68,3 +70,7 @@ async def main(msg: cl.Message):
 @cl.on_settings_update  
 async def setup_agent(settings):
     await core.setup_chat(settings["Model"], settings["Temperature"])  
+
+
+if __name__ == "__main__":
+    mount_chainlit(app=app,target=__file__)
