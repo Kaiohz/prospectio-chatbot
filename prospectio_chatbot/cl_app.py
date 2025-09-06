@@ -1,5 +1,4 @@
 import chainlit as cl
-import uvicorn
 from config import PostgreSettings
 from settings.chat_settings import ChatSettings
 from profiles.chat_profiles import ChatProfiles
@@ -8,8 +7,6 @@ from chainlit.data.sql_alchemy import SQLAlchemyDataLayer
 from chainlit.types import ThreadDict
 from mcp import ClientSession
 from langchain_mcp_adapters.tools import load_mcp_tools
-from prospectio_chatbot.main import app
-
 
 
 chat_settings = ChatSettings().get_chat_settings()
